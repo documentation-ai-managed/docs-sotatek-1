@@ -1,0 +1,138 @@
+---
+title: Configuring Your Sotatek Space
+description: Customize your documentation environment with user settings, permissions, and branding options.
+---
+
+## Overview
+
+Configure your Sotatek documentation space to match your team's needs. Adjust user roles, apply custom branding like your brand color `{brandColor: "#3B82F6"}`, set up integrations, and manage exports. These settings ensure secure, branded, and connected documentation.
+
+<Callout kind="info">
+  Access configuration from your dashboard at `https://dashboard.example.com/settings`.
+</Callout>
+
+## User Roles and Access Controls
+
+Define roles to control what team members can do. Sotatek supports four core roles: Admin, Editor, Viewer, and Guest.
+
+| Role    | Read   | Write  | Delete | Manage Users |
+|---------|--------|--------|--------|--------------|
+| Admin   | ✅     | ✅     | ✅     | ✅           |
+| Editor  | ✅     | ✅     | ❌     | ❌           |
+| Viewer  | ✅     | ❌     | ❌     | ❌           |
+| Guest   | ✅     | ❌     | ❌     | ❌           |
+
+Use the API to assign roles programmatically.
+
+<ParamField path="userId" param-type="string" required="true">
+  The unique user identifier.
+</ParamField>
+
+<ParamField path="role" param-type="string" required="true">
+  Role to assign: `admin`, `editor`, `viewer`, or `guest`.
+</ParamField>
+
+## Theme Customization
+
+Customize your space's appearance directly in the dashboard or via config file.
+
+<Steps>
+  <Step title="Access Theme Settings" icon="settings">
+    Navigate to Dashboard > Settings > Themes.
+  </Step>
+  <Step title="Set Brand Color" icon="palette">
+    Enter your brand color, such as `#3B82F6` for Sotatek blue.
+  </Step>
+  <Step title="Apply and Preview" icon="eye">
+    Save changes and preview your docs.
+  </Step>
+</Steps>
+
+For advanced theming, edit the config file.
+
+<CodeGroup tabs="JSON,YAML">
+  ```json
+  {
+    "theme": {
+      "brandColor": "#3B82F6",
+      "fontFamily": "Inter, sans-serif",
+      "logoUrl": "https://your-logo.com/logo.png"
+    }
+  }
+  ```
+  ```yaml
+  theme:
+    brandColor: "#3B82F6"
+    fontFamily: Inter, sans-serif
+    logoUrl: https://your-logo.com/logo.png
+  ```
+</CodeGroup>
+
+<Columns cols={2}>
+  <Card title="Primary Color" icon="palette" href="#theme-customization">
+    Set `{brandColor}` to `#3B82F6`.
+  </Card>
+  <Card title="Custom Fonts" icon="font" href="#theme-customization">
+    Upload or select from presets.
+  </Card>
+</Columns>
+
+## Integrations with External Tools
+
+Connect Sotatek to tools like GitHub, Slack, or analytics providers.
+
+<Tabs>
+  <Tab title="GitHub" icon="github">
+    Sync repositories for version-controlled docs.
+    
+    ```bash
+    curl -X POST https://api.example.com/v1/integrations/github \
+      -H "Authorization: Bearer YOUR_TOKEN" \
+      -d '{"repo": "sotatek/docs", "branch": "main"}'
+    ```
+  </Tab>
+  <Tab title="Slack" icon="message-circle">
+    Send notifications on updates.
+    
+    <ParamField header="X-Slack-Webhook" param-type="string" required="true">
+      Your Slack webhook URL: `https://hooks.slack.com/services/YOUR_WEBHOOK`.
+    </ParamField>
+  </Tab>
+  <Tab title="Google Analytics" icon="bar-chart">
+    Track doc usage.
+    
+    ```javascript
+    window.gtag('config', 'YOUR_TRACKING_ID');
+    ```
+  </Tab>
+</Tabs>
+
+## Export and Backup Configurations
+
+Export your space as Markdown, PDF, or ZIP for backups.
+
+<Expandable title="Advanced Export Options" default-open="false">
+  Use the CLI for automated backups:
+  
+  ````bash
+  sotatek export --format=md --output=./backup --include-attachments
+  ````
+  
+  Schedule via cron:
+  
+  ````bash
+  0 2 * * * sotatek export --format=zip --output=/backups/sotatek-docs-$(date +\%Y\%m\%d).zip
+  ````
+</Expandable>
+
+<Callout kind="tip">
+  Enable auto-backups in settings to run daily at 2 AM UTC.
+</Callout>
+
+## Troubleshooting Common Issues
+
+- **Theme not applying?** Clear browser cache and restart the dashboard.
+- **Role changes not syncing?** Wait 30 seconds or refresh the user list.
+- **Integration failing?** Verify `{API_KEY}` permissions and network access.
+
+For persistent issues, check logs at `https://dashboard.example.com/logs`.

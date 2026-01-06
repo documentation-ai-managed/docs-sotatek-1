@@ -1,0 +1,126 @@
+---
+title: Getting Started with Sotatek
+description: Learn how to set up your account and create your first documentation space in just a few minutes.
+---
+
+## Prerequisites
+
+Before you begin, ensure you have:
+
+<Callout kind="info">
+
+- A valid email address for account creation
+- Access to a modern web browser like Chrome or Firefox
+- Optional: Existing documents in Markdown or PDF format for import
+
+</Callout>
+
+## Create Your Account and Log In
+
+Follow these steps to sign up and access the dashboard.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit `https://app.sotatek.com/signup` and enter your email, password, and name.
+    
+    Verify your email by clicking the link sent to your inbox.
+  </Step>
+  <Step title="Log In" icon="log-in">
+    Go to `https://app.sotatek.com/login`.
+    
+    Enter your credentials to access the dashboard.
+  </Step>
+</Steps>
+
+## Set Up a New Documentation Space
+
+Create your first space to organize project docs.
+
+<Steps>
+  <Step title="Create Space" icon="plus">
+    From the dashboard, click **New Space**.
+    
+    Name it (e.g., "My Project Docs") and select a visibility (public or private).
+  </Step>
+  <Step title="Configure Basics" icon="settings">
+    Add a description and set permissions for team members.
+    
+    Save to generate your space URL: `https://app.sotatek.com/spaces/my-project-docs`.
+  </Step>
+</Steps>
+
+## Import Initial Documents
+
+Add your first documents using these methods.
+
+<Tabs>
+  <Tab title="Manual Upload" icon="upload">
+    Drag and drop files into the space editor.
+    
+    Supported formats: MDX, Markdown, PDF, images.
+  </Tab>
+  <Tab title="API Import" icon="api">
+    Use the import API for bulk operations.
+    
+    <CodeGroup tabs="cURL,JavaScript">
+    ````bash
+    curl -X POST https://api.sotatek.com/v1/spaces/{SPACE_ID}/import \
+      -H "Authorization: Bearer YOUR_API_KEY" \
+      -F "file=@/path/to/docs.md"
+    ````
+    ````javascript
+    const response = await fetch('https://api.sotatek.com/v1/spaces/{SPACE_ID}/import', {
+      method: 'POST',
+      headers: {
+        'Authorization': 'Bearer YOUR_API_KEY',
+        'Content-Type': 'multipart/form-data',
+      },
+      body: formData, // FormData with file
+    });
+    ````
+    </CodeGroup>
+  </Tab>
+</Tabs>
+
+<Callout kind="tip">
+  Replace `{SPACE_ID}` with your space's ID from the settings page and `YOUR_API_KEY` with your generated key.
+</Callout>
+
+## Basic Interface Tour
+
+Explore the main areas:
+
+<Columns cols={3}>
+  <Card title="Editor" icon="edit-3">
+    Write and preview MDX docs in real-time.
+  </Card>
+  <Card title="Spaces" icon="layers">
+    Switch between documentation spaces.
+  </Card>
+  <Card title="Search" icon="search">
+    Find docs across all spaces instantly.
+  </Card>
+</Columns>
+
+<Image
+  src="https://via.placeholder.com/800x400/3B82F6/white?text=Sotatek+Dashboard"
+  alt="Sotatek dashboard interface showing editor, spaces, and search"
+  width="800"
+  height="400"
+/>
+
+## Next Steps
+
+<Columns cols={2}>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with API keys and teams.
+  </Card>
+  <Card title="Advanced Features" icon="sparkles" href="/configuration">
+    Customize themes and integrations.
+  </Card>
+</Columns>
+
+<Expandable title="Troubleshooting Common Issues" default-open="false">
+  - **Login fails?** Check your email verification.
+  - **Import errors?** Ensure files are under 10MB and properly formatted.
+</Expandable>

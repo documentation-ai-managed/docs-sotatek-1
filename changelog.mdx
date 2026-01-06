@@ -1,0 +1,154 @@
+---
+title: Changelog
+description: Stay updated with the latest releases, new features, and improvements in Sotatek.
+---
+
+## Recent Updates
+
+Sotatek releases updates regularly to enhance your documentation experience. You can find detailed release notes below, organized by version. Each release includes new features, improvements, bug fixes, and occasionally breaking changes.
+
+<Callout kind="info">
+  Check the [GitHub releases page](https://github.com/sotatek/docs/releases) for full changelogs, download links, and migration guides.
+</Callout>
+
+<Update label="2024-10-15" description="v1.2.0" tags={["feature", "improvement"]}>
+
+## New Features
+
+- Added real-time collaboration for teams, allowing multiple users to edit docs simultaneously.
+- Introduced advanced search with filters for tags, authors, and dates.
+
+## Improvements
+
+- Enhanced performance of page rendering by `>30%` for large documentation sites.
+- Improved mobile responsiveness with better touch navigation.
+
+## Bug Fixes
+
+- Fixed issue where embedded images failed to load in preview mode.
+- Resolved syntax highlighting errors for TypeScript code blocks.
+
+</Update>
+
+<Update label="2024-09-20" description="v1.1.0" tags={["feature", "bugfix"]}>
+
+## New Features
+
+- Integrated version history for documents, with diff views and restore options.
+- Added custom themes support using your brand color `#3B82F6`.
+
+## Bug Fixes
+
+- Corrected authentication token refresh logic to prevent session timeouts.
+- Fixed export to PDF functionality for tables and diagrams.
+
+## Improvements
+
+- Optimized database queries for `>50%` faster project loading.
+
+</Update>
+
+<Update label="2024-08-10" description="v1.0.0" tags={["feature", "breaking"]}>
+
+## Initial Release
+
+- Core documentation workspace with project organization and MDX support.
+- Full-text search across all docs.
+- API integration for embedding docs via `https://api.example.com/docs/embed`.
+
+## Breaking Changes
+
+- Updated config format from YAML to JSON for better parsing.
+
+</Update>
+
+## Upgrade Instructions
+
+Follow these steps to update your Sotatek installation. Always back up your data first.
+
+<Steps>
+  <Step title="Backup Your Data" icon="database">
+
+    Create a full backup of your projects directory.
+
+````bash
+tar -czf sotatek-backup-$(date +%Y%m%d).tar.gz /path/to/sotatek/projects
+````
+
+  </Step>
+  <Step title="Update Package" icon="download">
+    <Tabs>
+      <Tab title="npm" icon="package">
+````bash
+npm install sotatek@latest
+````
+      </Tab>
+      <Tab title="yarn" icon="package">
+````bash
+yarn add sotatek@latest
+````
+      </Tab>
+    </Tabs>
+  </Step>
+  <Step title="Migrate Config" icon="settings">
+
+    Update your config file if needed.
+
+<CodeGroup tabs="npm,yarn">
+````javascript
+// package.json or sotatek.config.js
+module.exports = {
+  apiKey: `YOUR_API_KEY`,
+  theme: {
+    primary: '#3B82F6'
+  }
+};
+````
+````javascript
+// sotatek.config.mjs (new format)
+export default {
+  apiKey: `YOUR_API_KEY`,
+  theme: {
+    primary: '#3B82F6'
+  }
+};
+````
+</CodeGroup>
+
+  </Step>
+  <Step title="Restart Service" icon="refresh-cw">
+````bash
+sotatek restart
+````
+  </Step>
+</Steps>
+
+## Upcoming Changes
+
+<Expandable title="Preview: v1.3.0 Features" default-open="false">
+
+- AI-powered content suggestions.
+- Native support for Mermaid diagrams in all previews.
+- Webhook integrations for `https://your-webhook-url.com/webhook`.
+
+Stay tuned for the beta release next month.
+
+</Expandable>
+
+## Quick Links
+
+<Columns cols={3}>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started in 5 minutes.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your workspace.
+  </Card>
+  <Card title="Configuration" icon="settings" href="/configuration">
+    Customize Sotatek.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Enable auto-updates in your settings to always stay on the latest version.
+</Callout>

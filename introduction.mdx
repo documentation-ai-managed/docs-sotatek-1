@@ -1,0 +1,108 @@
+---
+title: Introduction to Sotatek
+description: Discover Sotatek, a comprehensive documentation platform designed for organizing and managing project documentation efficiently.
+---
+
+## Overview
+
+Sotatek provides a centralized space for your team's project documentation. You create, organize, and collaborate on docs using an intuitive interface that supports Markdown, embeds, and version control. Streamline knowledge sharing across your organization with search, permissions, and integrations.
+
+<Callout kind="info">
+  Sotatek integrates with your existing tools like GitHub, Slack, and Jira to keep documentation always up-to-date.
+</Callout>
+
+## Key Benefits for Teams
+
+Sotatek helps teams of all sizes manage documentation efficiently:
+
+- **Centralized Access**: All project docs in one searchable place.
+- **Collaboration**: Real-time editing and comments for seamless teamwork.
+- **Version History**: Track changes and revert when needed.
+- **Custom Organization**: Spaces, folders, and tags for structured content.
+
+## Core Features at a Glance
+
+<Columns cols={3}>
+  <Card title="Doc Spaces" icon="book-open" href="/docs/spaces">
+    Create dedicated spaces for projects, teams, or clients. Organize pages hierarchically with drag-and-drop.
+  </Card>
+  <Card title="Rich Editing" icon="edit-3" href="/docs/editor">
+    Write in Markdown, add embeds, images, and code blocks. Preview changes instantly.
+  </Card>
+  <Card title="Integrations" icon="link" href="/docs/integrations">
+    Sync with GitHub repos, post updates to Slack, and automate workflows.
+  </Card>
+  <Card title="Search & Permissions" icon="search" href="/docs/search">
+    Full-text search across all docs. Granular access controls per space.
+  </Card>
+</Columns>
+
+## Quick Start Guide
+
+Get started with Sotatek in minutes.
+
+<Steps>
+  <Step title="Sign Up" icon="user-plus">
+    Visit `https://app.sotatek.com` and create a free account. Verify your email to access the dashboard.
+  </Step>
+  <Step title="Create a Space" icon="folder-plus">
+    Click **New Space** and name it for your project, like "Alpha Release Docs".
+  </Step>
+  <Step title="Add Your First Page" icon="plus">
+    Inside the space, create a page. Use the editor to add content.
+
+````markdown
+# Project Overview
+
+Welcome to the project. Key milestones:
+
+- Q1: MVP launch
+- Q2: Beta features
+````
+
+  </Step>
+  <Step title="Invite Team" icon="users">
+    Share the space link or add members via email. Set roles like Editor or Viewer.
+  </Step>
+</Steps>
+
+<CodeGroup tabs="API,CLI">
+````javascript
+// Fetch space docs via API
+const response = await fetch('https://api.example.com/v1/spaces/{spaceId}/pages', {
+  headers: {
+    Authorization: `Bearer ${YOUR_API_KEY}`
+  }
+});
+const pages = await response.json();
+console.log(pages);
+````
+
+````bash
+# CLI to create a new page
+sotatek space create --name "My Project" --page "Overview.md"
+````
+</CodeGroup>
+
+## Navigation and Next Steps
+
+Explore Sotatek's capabilities with these guides:
+
+<Columns cols={2}>
+  <Card title="Quickstart" icon="zap" href="/quickstart">
+    Set up your first workspace and invite collaborators.
+  </Card>
+  <Card title="Authentication" icon="shield" href="/authentication">
+    Secure your spaces with API keys and SSO.
+  </Card>
+  <Card title="Advanced Features" icon="settings" href="/features">
+    Dive into custom templates and automation.
+  </Card>
+  <Card title="Help Center" icon="help-circle" href="/help-center">
+    FAQs, troubleshooting, and support options.
+  </Card>
+</Columns>
+
+<Callout kind="tip">
+  Bookmark your dashboard at `https://app.sotatek.com` for quick access. Use the search bar to find any doc instantly.
+</Callout>
